@@ -4,7 +4,7 @@ const app = express();
 
 const connection = mysql.createPool({
   connectionLimit: 10,
-  host: process.env.MYSQL_HOST || "localhst",
+  host: process.env.MYSQL_HOST || "localhost",
   user: process.env.MYSQL_USER || "root",
   password: process.env.MYSQL_PASSWORD || "123456",
   database: process.env.MYSQL_DATABASE || "test",
@@ -18,11 +18,11 @@ app.get("/", (req, res) => {
         status: "failed",
         msg: err,
       });
-      res.json({
-        status: "success",
-        msg: rows,
-      });
     }
+    res.json({
+      status: "success",
+      msg: rows,
+    });
   });
 });
 
