@@ -7,11 +7,11 @@ const connection = mysql.createPool({
   host: process.env.MYSQL_HOST || "localhost",
   user: process.env.MYSQL_USER || "root",
   password: process.env.MYSQL_PASSWORD || "123456",
-  database: process.env.MYSQL_DATABASE || "test",
+  database: process.env.MYSQL_DATABASE || "icoding",
 });
 
 app.get("/", (req, res) => {
-  const sql = "select * from student";
+  const sql = "select * from tutorials";
   connection.query(sql, (err, rows) => {
     if (err) {
       return res.json({
