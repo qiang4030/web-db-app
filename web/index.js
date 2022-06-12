@@ -5,13 +5,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const connection = mysql.createPool({
-  connectionLimit: 10,
-  host: process.env.MYSQL_HOST || "localhost",
-  user: process.env.MYSQL_USER || "root",
-  password: process.env.MYSQL_PASSWORD || "123456",
-  database: process.env.MYSQL_DATABASE || "icoding",
-});
+const dbConfig = require("./config/db.confg");
+
+const connection = mysql.createPool(dbConfig);
 
 app.get("/", (req, res) => {
   const sql = "select * from tutorials";
