@@ -4,12 +4,12 @@ services:
     build: ./db
     environment:
       MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: test
+      MYSQL_DATABASE: icoding
     restart: always
   web:
     build: ./web
     environment:
-      MYSQL_DATABASE: test
+      MYSQL_DATABASE: icoding
       MYSQL_USER: root
       MYSQL_PASSWORD: 123456
       MYSQL_HOST: db
