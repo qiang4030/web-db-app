@@ -1,9 +1,23 @@
 const express = require("express");
 const router = express.Router();
 
-const { create, findAll } = require("../contollers/tutorial.controller");
+const {
+  create,
+  findAll,
+  findAllPublished,
+  findById,
+  updateOne,
+  deleteOne,
+  deleteAll,
+} = require("../contollers/tutorial.controller");
 
-router.get("/", findAll);
 router.post("/create", create);
+router.get("/", findAll);
+router.get("/published", findAllPublished);
+// "/:id" 形式的路由会与子路由冲突，只能放到最后
+router.get("/:id", findById);
+router.put("/:id", updateOne);
+router.delete("/:id", deleteOne);
+router.delete("/", deleteAll);
 
 module.exports = router;
