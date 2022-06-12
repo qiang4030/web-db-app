@@ -1,15 +1,12 @@
 const express = require("express");
-const mysql = require("mysql");
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const { create, findAll } = require("./contollers/tutorial.controller");
+const tutorialRouter = require("./routes/tutorial.route");
 
-app.get("/", findAll);
-
-app.post("/create", create);
+app.use("/tutorial", tutorialRouter);
 
 app.use((err, req, res, next) => {
   if (err) {
