@@ -26,6 +26,10 @@ app.get("/", (req, res) => {
   });
 });
 
+const tutorialRouter = require("./routes/tutorial.route");
+
+app.use("/tutorial", tutorialRouter);
+
 const PORT = process.env.PORT || "5000";
 
 app.listen(PORT, () => {
