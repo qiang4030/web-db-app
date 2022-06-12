@@ -20,6 +20,16 @@ class Tutorial {
       return err;
     }
   }
+
+  // 查询所有记录
+  async findAll() {
+    const sql = "select * from tutorials";
+    try {
+      return await execSQL(sql);
+    } catch (err) {
+      return err;
+    }
+  }
 }
 
 module.exports = Tutorial;

@@ -5,23 +5,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", async (req, res) => {
-  const sql = "select * from tutorials";
-  try {
-    const rows = await execSQL(sql);
-    res.json({
-      status: "success",
-      msg: rows,
-    });
-  } catch (err) {
-    res.json({
-      status: "failed",
-      msg: err,
-    });
-  }
-});
+const { create, findAll } = require("./contollers/tutorial.controller");
 
-const { create } = require("./contollers/tutorial.controller");
+app.get("/", findAll);
 
 app.post("/create", create);
 
