@@ -36,14 +36,16 @@ app.post("/create", (req, res) => {
         msg: err,
       });
     }
-    res.json({
-      status: "success",
-      msg: rows,
-    });
+    if (rows.affectedRows === 1) {
+      return res.json({
+        status: "success",
+        msg: "添加成功",
+      });
+    }
   });
 });
 
-const PORT = process.env.PORT || "5000";
+const PORT = process.env.PORT || "3000";
 
 app.listen(PORT, () => {
   console.log("listening on port", PORT);
